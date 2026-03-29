@@ -16,7 +16,7 @@ spec:
         deployment:
           replicas: 1
         service:
-          type: LoadBalancer
+          type: {{ .Values.svcType }}
   destination:
     server: {{ .Values.spec.destination.server }}
     namespace: traefik
