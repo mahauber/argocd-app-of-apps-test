@@ -1,16 +1,16 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: app-of-apps
+  name: stackit-test-app-of-apps
 spec:
   project: default
   source:
     repoURL: https://github.com/mahauber/argocd-app-of-apps-test
     targetRevision: HEAD
-    path: .
+    path: charts/general
     helm:
       valueFiles:
-        - values.yaml
+        - ../../cluster/test/values-cluster2.yaml
   destination:
     server: https://kubernetes.default.svc
   syncPolicy:
