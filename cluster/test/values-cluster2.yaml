@@ -1,4 +1,5 @@
+clusterName: test
 spec:
   destination:
-    server: https://api.test.d1b3200a4d.s.ske.eu01.onstackit.cloud  # replace with your second cluster's API server URL
+    server: https://api.test.d1b3200a4d.s.ske.eu01.onstackit.cloud
 svcType: ClusterIP
