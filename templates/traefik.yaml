@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: traefik
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    repoURL: https://helm.traefik.io/traefik
+    chart: traefik
+    targetRevision: "33.x"
+    helm:
+      values: |
+        deployment:
+          replicas: 1
+        service:
+          type: LoadBalancer
+  destination:
+    server: {{ .Values.spec.destination.server }}
+    namespace: traefik
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
